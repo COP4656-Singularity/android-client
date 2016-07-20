@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">singularity.twodolist</string>
+    <string name="task_list">Task List</string>
+    <string name="item_number">Item</string>
+    <string name="sub_list">+ Sub List</string>
+    <string name="new_list">New List</string>
+    <string name="textAssignedTo">Assigned To</string>
+    <string name="textSharedWith">Shared With</string>
+    <string name="add_item">+ Task</string>
+    <string name="editDateTime">Date Completed:</string>
+    <string name="add_list">Add This List</string>
+    <string name="list_name">List Name:</string>
+    <string name="user_name">Username:</string>
+    <string name="pass_word">Password:</string>
+    <string name="log_in">Login</string>
+    <string name="task_desc">Task Short Description:</string>
+    <string name="note_box">Enter Note Here:</string>
+    <string name="del_task">Delete Task</string>
+    <string name="update">Update Task</string>
+    <string name="task_done">Done</string>
+    <string name="complete_task">Task Complete</string>
+</resources>
