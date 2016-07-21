@@ -15,7 +15,6 @@ import java.util.List;
 public class newList extends AppCompatActivity{
 
     private Button addTaskButton;
-    private Button addListButton;
     private EditText listNameText;
     String newListsName = null;
 
@@ -25,7 +24,6 @@ public class newList extends AppCompatActivity{
         setContentView(R.layout.new_list_screen);
 
         addTaskButton = (Button) findViewById(R.id.addTaskButton);
-        addListButton = (Button) findViewById(R.id.addListButton);
         listNameText = (EditText) findViewById(R.id.listNameText);
 
     }

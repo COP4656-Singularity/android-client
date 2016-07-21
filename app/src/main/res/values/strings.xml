@@ -2,7 +2,7 @@
     <string name="app_name">singularity.twodolist</string>
     <string name="task_list">Task List</string>
     <string name="item_number">Item</string>
-    <string name="sub_list">+ Sub List</string>
+    <string name="sub_list">+ Sub Task</string>
     <string name="new_list">New List</string>
     <string name="textAssignedTo">Assigned To</string>
     <string name="textSharedWith">Shared With</string>

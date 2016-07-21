@@ -31,16 +31,6 @@
         android:layout_marginTop="50dp"
         android:onClick="addNewTask" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add_list"
-        android:id="@+id/addListButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/addTaskButton"
-        android:onClick="addNewList" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
