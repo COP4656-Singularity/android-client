@@ -14,5 +14,5 @@ public class subList extends AppCompatActivity {
         String task_name = getIntent().getStringExtra("task_name");
     }
 
-
+//leaving for now, will copy most from note_detail_layout java if we end up using subtasks
 }

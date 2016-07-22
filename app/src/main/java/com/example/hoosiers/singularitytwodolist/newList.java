@@ -42,10 +42,5 @@ public class newList extends AppCompatActivity{
         }
     }
 
-    public void addNewList (View vw){
-        if (vw.getId() == R.id.addListButton)
-        {
-            /*send list info back to server*/
-        }
-    }
+
 }

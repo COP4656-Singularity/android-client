@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckedTextView;
 import android.widget.EditText;
 
 import java.util.ArrayList;
@@ -82,7 +81,7 @@ public class noteDetail extends AppCompatActivity{
             if (taskName != null){
 
                 Intent i = new Intent(noteDetail.this, subList.class);
-                i.putExtra("task_name", taskName);
+                i.putExtra("sub_list_array", subTasks);
                 startActivity(new Intent(noteDetail.this, subList.class));
 
             }
