@@ -1,6 +1,5 @@
 package singularity.twodolist;
 
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -9,9 +8,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Hoosiers on 7/19/2016.
- */
 public class ToDoList {
     private String list_self, list_name, list_owner;
     private int list_version;
@@ -39,37 +35,31 @@ public class ToDoList {
     void set_list_self(String self)
     {
         this.list_self = self;
-        return;
     }
 
     void set_list_version(int version)
     {
         this.list_version = version;
-        return;
     }
 
     void set_list_name(String name)
     {
         this.list_name = name;
-        return;
     }
 
     void set_list_owner(String owner)
     {
         this.list_owner = owner;
-        return;
     }
 
     void set_list_acl(List<String> acl)
     {
         this.list_acl = acl;
-        return;
     }
 
     void set_list_tasks(List<Task> tasks)
     {
         this.list_tasks = tasks;
-        return;
     }
 
     String get_list_self()
@@ -103,7 +93,7 @@ public class ToDoList {
     }
 
     public static ArrayList<ToDoList> createToDoListFromJSON(JSONObject json) {
-        ArrayList<ToDoList> toDoLists = new ArrayList<ToDoList>();
+        ArrayList<ToDoList> toDoLists = new ArrayList<>();
 
         int c = 0;
         JSONArray Items = null;
@@ -115,14 +105,15 @@ public class ToDoList {
             e.printStackTrace();
         }
 
-        Log.d("Payload Size", Integer.toString(c));
-
-        for (int i=1; i<=c; ++i) {
+        for (int i=0; i<c; ++i) {
             ToDoList toDoList = new ToDoList();
-            JSONObject o = new JSONObject();
             try {
-                o = Items.getJSONObject(i);
+                JSONObject o = Items.getJSONObject(i);
+                toDoList.set_list_self(o.getString("self"));
+                toDoList.set_list_version(o.getInt("version"));
                 toDoList.set_list_name(o.getString("name"));
+                toDoList.set_list_tasks(Task.createTaskListFromJSON(o.getJSONObject("tasks")));
+                toDoList.set_list_owner(o.getString("owner"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
