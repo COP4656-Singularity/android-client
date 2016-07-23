@@ -127,4 +127,25 @@ public class ToDoList {
 
         return toDoLists;
     }
+
+    public static String createJSONFromToDoList(ToDoList toDoList, String self) {
+        String json;
+
+        json = "{ ";
+        if ( self != null ) {
+            json += "\"version\": " + (toDoList.get_list_version() + 1) +",";
+            json += "\"self\": \"" + toDoList.get_list_self() + "\",";
+        }
+        json += "\"name\": \"" + toDoList.get_list_name() + "\", ";
+        json += "\"acl\": [ \"href\" ], ";
+        json += "\"tasks\": [ ";
+        ArrayList<Task> tasks = toDoList.get_list_tasks();
+        for (int i=0; i<tasks.size(); ++i) {
+            json += Task.createJSONFromTaskList(tasks);
+        }
+        json += " ]";
+        json += " }";
+
+        return json;
+    }
 }

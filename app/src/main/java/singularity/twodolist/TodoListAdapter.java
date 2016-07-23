@@ -3,9 +3,11 @@ package singularity.twodolist;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import java.util.ArrayList;
 
@@ -56,25 +58,13 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ViewHo
         // Set item views based on your views and data model
         TextView listNameTextView = viewHolder.listNameTextView;
         listNameTextView.setText(toDoList.get_list_name());
+        listNameTextView.setTag(toDoList.get_list_self());
 
         RecyclerView rvTasks = viewHolder.taskRecyclerView;
         ArrayList<Task> tasks = toDoList.get_list_tasks();
         TaskListAdapter adapter = new TaskListAdapter(getContext(), tasks);
         rvTasks.setAdapter(adapter);
         rvTasks.setLayoutManager(new LinearLayoutManager(getContext()));
-
-    /*
-        toDoLists = ToDoList.createToDoListFromJSON(json);
-        ToDoListAdapter adapter = new ToDoListAdapter(getParent(), toDoLists);
-        rvToDoLists.setAdapter(adapter);
-        rvToDoLists.setLayoutManager(new LinearLayoutManager(getParent()));
-
-        InnerRecyclerviewAdapter adapter=new InnerRecyclerviewAdapter(context,urlistArray);
-        holder.recyclerView.setAdapter(adapter);
-        holder.recyclerView.setHasFixedSize(true);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-        */
     }
 
     @Override
@@ -88,6 +78,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ViewHo
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
         public TextView listNameTextView;
+        public ImageButton addNewListImageButton;
         public RecyclerView taskRecyclerView;
 
         // We also create a constructor that accepts the entire item row
@@ -98,8 +89,15 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ViewHo
             super(itemView);
 
             listNameTextView = (TextView) itemView.findViewById(R.id.list_name);
+            addNewListImageButton = (ImageButton) itemView.findViewById(R.id.addNewList);
             taskRecyclerView = (RecyclerView) itemView.findViewById(R.id.tasks);
 
+            addNewListImageButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // start newListItem process and use listNameTextView.getTag().toString()
+                }
+            });
         }
     }
 }

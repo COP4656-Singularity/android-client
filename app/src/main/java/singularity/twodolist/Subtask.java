@@ -83,4 +83,20 @@ public class Subtask {
         }
         return subtasks;
     }
+
+    public static String createJSONFromSubtaskList(ArrayList<Subtask> subtasks) {
+        String json = null;
+
+        for (int c=0; c<subtasks.size(); ++c) {
+            Subtask subtask = subtasks.get(c);
+            json += "{ ";
+            json += "\"name\": \"" + subtask.get_subtask_name() + "\", ";
+            json += "\"note\": \"" + subtask.get_subtask_note() + "\", ";
+            json += "\"complete\": \"" + subtask.get_subtask_completed() + "\" ";
+            json += " }";
+            if ( c != (subtasks.size() - 1) ) json +=", ";
+        }
+
+        return json;
+    }
 }

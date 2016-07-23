@@ -1,4 +1,6 @@
 package singularity.twodolist;
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -8,6 +10,7 @@ import org.json.JSONObject;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Task {
     public String task_name;
@@ -67,6 +70,7 @@ public class Task {
         return this.subtasks;
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     public static ArrayList<Task> createTaskListFromJSON(JSONArray jsonArray) {
         ArrayList<Task> tasks = new ArrayList<>();
 
@@ -91,5 +95,26 @@ public class Task {
             tasks.add(task);
         }
         return tasks;
+    }
+
+    public static String createJSONFromTaskList(ArrayList<Task> tasks) {
+        String json = null;
+
+        for (int c=0; c<tasks.size(); ++c) {
+            Task task = tasks.get(c);
+            json += "{ ";
+            json += "\"name\": \"" + task.get_task_name() + "\", ";
+            json += "\"note\": \"" + task.get_task_note() + "\", ";
+            json += "\"complete\": \"" + task.get_task_completed() + "\", ";
+            json += "\"subtasks\": [ ";
+            ArrayList<Subtask> subtasks = task.get_subtasks();
+            for (int i=0; i<subtasks.size(); ++i) {
+                json += Subtask.createJSONFromSubtaskList(subtasks);
+            }
+            json += " ]";
+            json += " }";
+            if ( c != (tasks.size() - 1) ) json +=", ";
+        }
+        return json;
     }
 }

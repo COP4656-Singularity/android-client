@@ -92,6 +92,14 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
             taskNameTextView = (TextView) itemView.findViewById(R.id.task_name);
             taskNoteTextView = (TextView) itemView.findViewById(R.id.task_note);
             taskCompletedCheckBox = (CheckBox) itemView.findViewById(R.id.task_completed);
+
+            taskCompletedCheckBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    taskCompletedCheckBox.toggle();
+                }
+            });
+
         }
     }
 }
