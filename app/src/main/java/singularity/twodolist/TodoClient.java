@@ -80,6 +80,11 @@ public abstract class TodoClient extends AsyncTask<String, Void, String> {
         return this;
     }
 
+    private TodoClient selfPath(String path) {
+        this.path = path;
+        return this;
+    }
+
     private TodoClient with(String payload) {
         this.payload = payload;
         return this;
@@ -88,6 +93,10 @@ public abstract class TodoClient extends AsyncTask<String, Void, String> {
     private TodoClient forId(String id) {
         this.id = id;
         return this;
+    }
+
+    public TodoClient getSelf(String path) {
+        return doGet().selfPath(path);
     }
 
     public TodoClient login(String email, String password) {
@@ -102,9 +111,6 @@ public abstract class TodoClient extends AsyncTask<String, Void, String> {
     }
 
     public TodoClient createTodo(String payload) {
-        if (payload.startsWith("{")) {
-            //create a stub. assume the payload is the name.
-        }
         return doPost().todoPath().with(payload);
     }
 
