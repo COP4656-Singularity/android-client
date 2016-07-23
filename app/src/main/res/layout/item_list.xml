@@ -4,20 +4,35 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
     >
-
-    <TextView
-        android:id="@+id/list_name"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:background="@color/garnet"
-        android:textColor="@color/gold"
-        />
+        >
+
+        <TextView
+            android:id="@+id/list_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_weight="1"
+            android:textColor="@color/gold"
+            android:layout_margin="10dp"
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/addNewList"
+            android:layout_gravity="right"
+            android:background="@null"
+            android:src="@android:drawable/ic_input_add" />
+
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/tasks"
@@ -25,5 +40,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:scrollbars="none"/>
+
+    <View
+        android:layout_height="2dp"
+        android:background="@color/garnet"
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"/>
 
 </LinearLayout>

@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import java.util.ArrayList;
 
@@ -53,7 +54,11 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
 
         // Set item views based on your views and data model
         TextView taskNameTextView = viewHolder.taskNameTextView;
+        TextView taskNoteTextView = viewHolder.taskNoteTextView;
+        CheckBox taskCompletedCheckBox = viewHolder.taskCompletedCheckBox;
         taskNameTextView.setText(taskList.get_task_name());
+        taskNoteTextView.setText(taskList.get_task_note());
+        if (taskList.get_task_completed()) taskCompletedCheckBox.toggle();
     }
 
     @Override
@@ -74,6 +79,8 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
         public TextView taskNameTextView;
+        public TextView taskNoteTextView;
+        public CheckBox taskCompletedCheckBox;
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
@@ -83,6 +90,8 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
             super(itemView);
 
             taskNameTextView = (TextView) itemView.findViewById(R.id.task_name);
+            taskNoteTextView = (TextView) itemView.findViewById(R.id.task_note);
+            taskCompletedCheckBox = (CheckBox) itemView.findViewById(R.id.task_completed);
         }
     }
 }
