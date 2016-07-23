@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">singularity.twodolist</string>
+    <string name="app_name">Singularity 2-Do List</string>
     <string name="task_list">Task List</string>
     <string name="item_number">Item</string>
     <string name="sub_list">+ Sub Task</string>
