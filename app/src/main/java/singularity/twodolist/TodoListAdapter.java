@@ -54,8 +54,8 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ViewHo
         ToDoList toDoList = mToDoLists.get(position);
 
         // Set item views based on your views and data model
-        TextView nameTextView = viewHolder.nameTextView;
-        nameTextView.setText(toDoList.get_list_name());
+        TextView listNameTextView = viewHolder.listNameTextView;
+        listNameTextView.setText(toDoList.get_list_name());
 
         RecyclerView rvTasks = viewHolder.taskRecyclerView;
         ArrayList<Task> tasks = toDoList.get_list_tasks();
@@ -87,7 +87,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
-        public TextView nameTextView;
+        public TextView listNameTextView;
         public RecyclerView taskRecyclerView;
 
         // We also create a constructor that accepts the entire item row
@@ -97,7 +97,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ViewHo
             // to access the context from any ViewHolder instance.
             super(itemView);
 
-            nameTextView = (TextView) itemView.findViewById(R.id.list_name);
+            listNameTextView = (TextView) itemView.findViewById(R.id.list_name);
             taskRecyclerView = (RecyclerView) itemView.findViewById(R.id.tasks);
 
         }

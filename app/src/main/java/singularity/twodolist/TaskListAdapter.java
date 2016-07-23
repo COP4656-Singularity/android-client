@@ -52,8 +52,8 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
         Task taskList = mTaskLists.get(position);
 
         // Set item views based on your views and data model
-        TextView nameTextView = viewHolder.nameTextView;
-        nameTextView.setText(taskList.get_task_name());
+        TextView taskNameTextView = viewHolder.taskNameTextView;
+        taskNameTextView.setText(taskList.get_task_name());
     }
 
     @Override
@@ -73,7 +73,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
-        public TextView nameTextView;
+        public TextView taskNameTextView;
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
@@ -82,7 +82,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
             // to access the context from any ViewHolder instance.
             super(itemView);
 
-            nameTextView = (TextView) itemView.findViewById(R.id.task_name);
+            taskNameTextView = (TextView) itemView.findViewById(R.id.task_name);
         }
     }
 }
