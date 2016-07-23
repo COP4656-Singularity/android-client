@@ -1,6 +1,5 @@
-package singularity.twodolist; /**
- * Created by Hoosiers on 7/17/2016.
- */
+package singularity.twodolist;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -35,7 +34,6 @@ public class MainScreen extends AppCompatActivity {
 
         // Lookup the recyclerview in activity layout
         rvToDoLists = (RecyclerView) findViewById(R.id.lists);
-        rvTaskLists = (RecyclerView) findViewById(R.id.tasks);
     }
 
     private void getList() {
@@ -51,7 +49,7 @@ public class MainScreen extends AppCompatActivity {
                         // Initialize contacts
                         toDoLists = ToDoList.createToDoListFromJSON(json);
                         // Create adapter passing in the sample user data
-                        TodoListAdapter adapter = new TodoListAdapter(getParent(), toDoLists);
+                        ToDoListAdapter adapter = new ToDoListAdapter(getParent(), toDoLists);
                         // Attach the adapter to the recyclerview to populate items
                         rvToDoLists.setAdapter(adapter);
                         // Set layout manager to position the items

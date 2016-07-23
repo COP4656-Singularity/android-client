@@ -1,8 +1,11 @@
 package singularity.twodolist;
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,32 +62,28 @@ public class Task {
     {
         return this.task_completed;
     }
-    public List<Subtask> get_subtasks()
+    public ArrayList<Subtask> get_subtasks()
     {
         return this.subtasks;
     }
 
-    public static ArrayList<Task> createTaskListFromJSON(JSONObject json) {
+    public static ArrayList<Task> createTaskListFromJSON(JSONArray jsonArray) {
         ArrayList<Task> tasks = new ArrayList<>();
 
-        int c = 0;
-        JSONArray Tasks = null;
 
-        try {
-            Tasks = json.getJSONArray("tasks");
-            c = Tasks.length();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        Log.d("Task JSON", jsonArray.toString());
+        int c = jsonArray.length();
 
         for (int i=0; i<c; ++i) {
             Task task = new Task();
             try {
-                JSONObject o = Tasks.getJSONObject(i);
-                task.set_task_name(o.getString("name"));
-                task.set_task_note(o.getString("note"));
-                task.set_task_completed(o.getBoolean("complete"));
-                task.set_subtasks(Subtask.createSubtaskListFromJSON(o.getJSONObject("subtasks")));
+                JSONObject taskObject;
+                new JSONObject();
+                taskObject = jsonArray.getJSONObject(i);
+                task.set_task_name(taskObject.getString("name"));
+                task.set_task_note(taskObject.getString("note"));
+                task.set_task_completed(taskObject.getBoolean("complete"));
+                task.set_subtasks(Subtask.createSubtaskListFromJSON(taskObject.getJSONArray("subtasks").getJSONObject(0)));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

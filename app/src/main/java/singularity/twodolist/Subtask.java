@@ -1,5 +1,7 @@
 package singularity.twodolist;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,6 +62,7 @@ public class Subtask {
 
         try {
             Subtasks = json.getJSONArray("subtasks");
+            Log.d("Subtask JSON", Subtasks.toString());
             c = Subtasks.length();
         } catch (JSONException e) {
             e.printStackTrace();

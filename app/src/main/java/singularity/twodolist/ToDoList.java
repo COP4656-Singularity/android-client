@@ -1,6 +1,8 @@
 package singularity.twodolist;
 
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,9 +14,9 @@ public class ToDoList {
     private String list_self, list_name, list_owner;
     private int list_version;
     private List<String> list_acl = null;
-    private List<Task> list_tasks = null;
+    private ArrayList<Task> list_tasks = null;
 
-    ToDoList(String list_self, int list_version, String list_name, String list_owner, List<String> list_acl, List<Task> list_tasks) {
+    ToDoList(String list_self, int list_version, String list_name, String list_owner, List<String> list_acl, ArrayList<Task> list_tasks) {
         this.list_self = list_self;
         this.list_version = list_version;
         this.list_name = list_name;
@@ -57,7 +59,7 @@ public class ToDoList {
         this.list_acl = acl;
     }
 
-    void set_list_tasks(List<Task> tasks)
+    void set_list_tasks(ArrayList<Task> tasks)
     {
         this.list_tasks = tasks;
     }
@@ -87,7 +89,7 @@ public class ToDoList {
         return this.list_acl;
     }
 
-    List<Task> get_list_tasks()
+    ArrayList<Task> get_list_tasks()
     {
         return this.list_tasks;
     }
@@ -100,6 +102,8 @@ public class ToDoList {
 
         try {
             Items = json.getJSONObject("data").getJSONArray("Items");
+            Log.d("List JSON", Items.toString());
+
             c = Items.length();
         } catch (JSONException e) {
             e.printStackTrace();
@@ -112,7 +116,7 @@ public class ToDoList {
                 toDoList.set_list_self(o.getString("self"));
                 toDoList.set_list_version(o.getInt("version"));
                 toDoList.set_list_name(o.getString("name"));
-                toDoList.set_list_tasks(Task.createTaskListFromJSON(o.getJSONObject("tasks")));
+                toDoList.set_list_tasks(Task.createTaskListFromJSON(o.getJSONArray("tasks")));
                 toDoList.set_list_owner(o.getString("owner"));
             } catch (JSONException e) {
                 e.printStackTrace();
