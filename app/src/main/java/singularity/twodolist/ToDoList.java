@@ -1,5 +1,12 @@
 package singularity.twodolist;
 
+import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +30,7 @@ public class ToDoList {
     ToDoList() {
         this.list_self = null;
         this.list_version = -1;
-        this.list_name = null;
+        this.list_name = "ToDo List Item";
         this.list_owner = null;
         this.list_acl = null;
         this.list_tasks = null;
@@ -93,5 +100,36 @@ public class ToDoList {
     List<Task> get_list_tasks()
     {
         return this.list_tasks;
+    }
+
+    public static ArrayList<ToDoList> createToDoListFromJSON(JSONObject json) {
+        ArrayList<ToDoList> toDoLists = new ArrayList<ToDoList>();
+
+        int c = 0;
+        JSONArray Items = null;
+
+        try {
+            Items = json.getJSONObject("data").getJSONArray("Items");
+            c = Items.length();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Log.d("Payload Size", Integer.toString(c));
+
+        for (int i=1; i<=c; ++i) {
+            ToDoList toDoList = new ToDoList();
+            JSONObject o = new JSONObject();
+            try {
+                o = Items.getJSONObject(i);
+                toDoList.set_list_name(o.getString("name"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            toDoLists.add(toDoList);
+        }
+
+        return toDoLists;
     }
 }
