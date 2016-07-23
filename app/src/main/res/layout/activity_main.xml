@@ -64,7 +64,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Login Return Space"
         android:id="@+id/textViewLogin"
         android:layout_below="@+id/editTextPass"
         android:layout_centerHorizontal="true" />
