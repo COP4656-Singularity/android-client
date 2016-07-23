@@ -47,7 +47,7 @@ public class NewList extends AppCompatActivity {
 
         // call the method you want to invoke from the api:
         c.createTodo(json.toString()).execute();
-
+        startActivity(new Intent(NewList.this, NoteDetail.class));
         // then exit. this is async so we wait for the thread to call the onPostExecute() method
         // we defined in the anonymous class above.
     }
