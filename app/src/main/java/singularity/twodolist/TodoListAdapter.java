@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 // Create the basic adapter extending from RecyclerView.Adapter
 // Note that we specify the custom ViewHolder which gives us access to our views
-public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ViewHolder> {
+public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.ViewHolder> {
 
     // Store a member variable for the contacts
     private ArrayList<ToDoList> mToDoLists;
@@ -26,7 +26,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ViewHo
     private Context mContext;
 
     // Pass in the contact array into the constructor
-    public ToDoListAdapter(Context context, ArrayList<ToDoList> toDoLists) {
+    public TodoListAdapter(Context context, ArrayList<ToDoList> toDoLists) {
         mToDoLists = toDoLists;
         mContext = context;
     }

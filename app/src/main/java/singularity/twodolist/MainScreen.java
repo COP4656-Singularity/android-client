@@ -51,7 +51,7 @@ public class MainScreen extends AppCompatActivity {
                         // Initialize contacts
                         toDoLists = ToDoList.createToDoListFromJSON(json);
                         // Create adapter passing in the sample user data
-                        ToDoListAdapter adapter = new ToDoListAdapter(getParent(), toDoLists);
+                        TodoListAdapter adapter = new TodoListAdapter(getParent(), toDoLists);
                         // Attach the adapter to the recyclerview to populate items
                         rvToDoLists.setAdapter(adapter);
                         // Set layout manager to position the items
