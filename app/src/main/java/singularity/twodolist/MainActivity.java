@@ -29,10 +29,7 @@ public class MainActivity extends AppCompatActivity {
         editTextPass = (EditText) findViewById(R.id.editTextPass);
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
         textViewLogin = (TextView) findViewById(R.id.textViewLogin);
-
     }
-
-
 
     public void userLogin (View v){
         String userName = editTextUser.getText().toString();

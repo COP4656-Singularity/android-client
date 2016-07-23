@@ -11,14 +11,14 @@
     android:onClick="goToNewListScreen">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/task_list"
+        android:id="@+id/lists"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_above="@+id/add_task_wrapper"
-        android:layout_marginBottom="12dp"
         android:orientation="vertical"
         android:scrollbars="none"/>
+
     <LinearLayout
         android:id="@+id/add_task_wrapper"
         android:layout_width="match_parent"
@@ -27,15 +27,12 @@
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/new_list"
-        android:id="@+id/newListButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="goToNewListScreen" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_list"
+            android:id="@+id/newListButton"
+            android:onClick="goToNewListScreen" />
 
     </LinearLayout>
 

@@ -23,7 +23,7 @@ public class MainScreen extends AppCompatActivity {
     private RecyclerView.Adapter recyclerViewAdapter;
 
     ArrayList<ToDoList> toDoLists;
-    RecyclerView rvToDoLists;
+    RecyclerView rvToDoLists, rvTaskLists;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +34,8 @@ public class MainScreen extends AppCompatActivity {
         getList();
 
         // Lookup the recyclerview in activity layout
-        rvToDoLists = (RecyclerView) findViewById(R.id.task_list);
-
+        rvToDoLists = (RecyclerView) findViewById(R.id.lists);
+        rvTaskLists = (RecyclerView) findViewById(R.id.tasks);
     }
 
     private void getList() {
