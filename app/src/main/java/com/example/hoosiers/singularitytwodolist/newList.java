@@ -1,46 +1,33 @@
-package com.example.hoosiers.singularitytwodolist;
+package singularity.twodolist;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-
-import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
- * Created by Hoosiers on 7/17/2016.
+ * Created by David on 7/21/2016.
  */
-public class newList extends AppCompatActivity{
+public class NewList extends AppCompatActivity {
+    public void createNewList(View view) throws JSONException {
+        JSONObject json = new JSONObject();
+        EditText mEdit = (EditText) findViewById(R.id.listNameText);
+        String value = mEdit.getText().toString();
+        json.put("name", value);
 
-    private Button addTaskButton;
-    private EditText listNameText;
-    String newListsName = null;
+        // extend the client using an anonymous class:
+        TodoClient c = new TodoClient() {
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+            }
+        };
 
+        // call the method you want to invoke from the api:
+        c.createTodo(json.toString()).execute();
 
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.new_list_screen);
-
-        addTaskButton = (Button) findViewById(R.id.addTaskButton);
-        listNameText = (EditText) findViewById(R.id.listNameText);
-
+        // then exit. this is async so we wait for the thread to call the onPostExecute() method
+        // we defined in the anonymous class above.
     }
-
-    public void newListName (View view){
-        newListsName = listNameText.getText().toString();
-        //PUT newListsName;
-    }
-
-    public void addNewTask (View v) {
-        if (v.getId() == R.id.addTaskButton)
-        {
-            Intent i = new Intent(newList.this, noteDetail.class);
-            i.putExtra("list_name", newListsName);
-            startActivity(new Intent(newList.this, noteDetail.class));
-        }
-    }
-
-
 }
