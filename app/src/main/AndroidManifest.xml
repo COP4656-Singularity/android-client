@@ -16,8 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="singularity.twodolist.MainScreen"></activity>
-        <activity android:name="singularity.twodolist.NoteDetail"></activity>
+        <activity android:name=".MainScreen"></activity>
+        <activity android:name=".NoteDetail"></activity>
+        <activity android:name=".NewList"></activity>
     </application>
 
 </manifest>
