@@ -1,4 +1,4 @@
-package com.example.hoosiers.singularitytwodolist;
+package singularity.twodolist;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.hoosiers.singularitytwodolist;
+package singularity.twodolist;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 /**
  * Created by Hoosiers on 7/20/2016.
  */
-public class subList extends AppCompatActivity {
+public class SubList extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

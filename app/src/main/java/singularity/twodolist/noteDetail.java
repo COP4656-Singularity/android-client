@@ -1,4 +1,4 @@
-package com.example.hoosiers.singularitytwodolist;
+package singularity.twodolist;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Hoosiers on 7/17/2016.
  */
-public class noteDetail extends AppCompatActivity{
+public class NoteDetail extends AppCompatActivity{
 
     private EditText checkedTextView;
     private EditText editTextTaskDesc;
@@ -80,9 +80,9 @@ public class noteDetail extends AppCompatActivity{
         if (v.getId() == R.id.buttonSubList){
             if (taskName != null){
 
-                Intent i = new Intent(noteDetail.this, subList.class);
+                Intent i = new Intent(NoteDetail.this, SubList.class);
                 i.putExtra("sub_list_array", subTasks);
-                startActivity(new Intent(noteDetail.this, subList.class));
+                startActivity(new Intent(NoteDetail.this, SubList.class));
 
             }
 

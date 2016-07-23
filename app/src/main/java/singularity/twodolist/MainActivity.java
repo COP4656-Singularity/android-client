@@ -1,4 +1,4 @@
-package com.example.hoosiers.singularitytwodolist;
+package singularity.twodolist;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                             firstName = ((JSONObject) json.getJSONObject("data").getJSONArray("Items").get(0)).getString("firstName");
                             lastName = ((JSONObject) json.getJSONObject("data").getJSONArray("Items").get(0)).getString("lastName");
                             textViewLogin.setText("Hello " +firstName);
-                            startActivity(new Intent(MainActivity.this, mainScreen.class));
+                            startActivity(new Intent(MainActivity.this, MainScreen.class));
                         } else {
                             textViewLogin.setText("Login Failed, Try Again");
                             editTextUser.setText("");

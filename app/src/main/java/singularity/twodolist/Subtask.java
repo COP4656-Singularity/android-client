@@ -1,4 +1,4 @@
-package com.example.hoosiers.singularitytwodolist;
+package singularity.twodolist;
 
 /**
  * Created by Hoosiers on 7/19/2016.

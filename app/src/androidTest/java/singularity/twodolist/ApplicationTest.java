@@ -1,4 +1,4 @@
-package com.example.hoosiers.singularitytwodolist;
+package singularity.twodolist;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
