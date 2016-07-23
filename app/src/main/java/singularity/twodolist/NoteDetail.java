@@ -19,7 +19,7 @@ public class NoteDetail extends AppCompatActivity{
     private EditText editTextTaskDesc;
     private EditText editTextDate;
     private Button buttonUpdateTask;
-    private Button buttonSubList;
+    //private Button buttonSubList;
     private Button buttonDeleteTask;
     private List<Task> taskList;
     private ArrayList<Subtask> subTasks;
@@ -36,7 +36,7 @@ public class NoteDetail extends AppCompatActivity{
         editTextTaskDesc = (EditText) findViewById(R.id.editTextTaskDesc);
         editTextDate = (EditText) findViewById(R.id.editTextDate);
         buttonUpdateTask = (Button) findViewById(R.id.buttonUpdateTask);
-        buttonSubList = (Button) findViewById(R.id.buttonSubList);
+        //buttonSubList = (Button) findViewById(R.id.buttonSubList);
         buttonDeleteTask = (Button) findViewById(R.id.buttonDeleteTask);
         editTextDate = (EditText) findViewById(R.id.editTextDate);
 
@@ -76,7 +76,7 @@ public class NoteDetail extends AppCompatActivity{
         }
     }
 
-    public void addSubTask (View v){
+   /* public void addSubTask (View v){
         if (v.getId() == R.id.buttonSubList){
             if (taskName != null){
 
@@ -87,7 +87,7 @@ public class NoteDetail extends AppCompatActivity{
             }
 
         }
-    }
+    }*/
 
     public void deleteTask (View v){
         //GET task
