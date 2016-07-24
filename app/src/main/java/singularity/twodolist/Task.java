@@ -18,7 +18,7 @@ public class Task {
     public boolean task_completed;
     //public ArrayList<Subtask> subtasks;
 
-    Task(String task_name, String task_note, boolean task_completed, ArrayList<Subtask> subtasks){
+    Task(String task_name, String task_note, boolean task_completed) { //}, ArrayList<Subtask> subtasks){
         this.task_name = task_name;
         this.task_note = task_note;
         this.task_completed = task_completed;
