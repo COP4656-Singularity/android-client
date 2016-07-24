@@ -114,8 +114,8 @@ public abstract class TodoClient extends AsyncTask<String, Void, String> {
         return doPost().todoPath().with(payload);
     }
 
-    public TodoClient updateTodo(String payload) {
-        return doPut().todoPath().with(payload);
+    public TodoClient updateTodo(String id, String payload) {
+        return doPut().todoPath().forId(id).with(payload);
     }
 
     public TodoClient getTodo(String id) {
