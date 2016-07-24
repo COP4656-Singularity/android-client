@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class NoteDetail extends AppCompatActivity{
     //private Button buttonSubList;
     private Button buttonDeleteTask;
     private List<Task> taskList;
-    private ArrayList<Subtask> subTasks;
+    //private ArrayList<Subtask> subTasks;
     String taskName = null;
     String taskNote = null;
     String taskDate = null;
@@ -69,11 +71,17 @@ public class NoteDetail extends AppCompatActivity{
                 if (taskDate != null){
                     taskCompleted = true;
                 }
-                ArrayList<Subtask> subTasks = new ArrayList<Subtask>();
-                Task taskObject = new Task(taskName, taskNote, taskCompleted, subTasks);
+                //ArrayList<Subtask> subTasks = new ArrayList<Subtask>();
+                Task taskObject = new Task(taskName, taskNote, taskCompleted); //, subTasks);
                 taskList.add(taskObject);
+
             }
         }
+    }
+
+    public List<Task> getTaskList()
+    {
+        return taskList;
     }
 
    /* public void addSubTask (View v){
