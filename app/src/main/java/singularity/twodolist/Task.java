@@ -16,20 +16,20 @@ public class Task {
     public String task_name;
     public String task_note;
     public boolean task_completed;
-    public ArrayList<Subtask> subtasks;
+    //public ArrayList<Subtask> subtasks;
 
     Task(String task_name, String task_note, boolean task_completed, ArrayList<Subtask> subtasks){
         this.task_name = task_name;
         this.task_note = task_note;
         this.task_completed = task_completed;
-        this.subtasks = subtasks;
+        //this.subtasks = subtasks;
     }
 
     Task() {
         this.task_name = null;
         this.task_note = null;
         this.task_completed = false;
-        this.subtasks = null;
+        //this.subtasks = null;
     }
 
     void set_task_name(String name)
@@ -47,10 +47,10 @@ public class Task {
         this.task_completed = task_completed;
     }
 
-    void set_subtasks (ArrayList<Subtask> subtasks)
+    /*void set_subtasks (ArrayList<Subtask> subtasks)
     {
         this.subtasks = subtasks;
-    }
+    }*/
 
 
     public String get_task_name()
@@ -65,10 +65,10 @@ public class Task {
     {
         return this.task_completed;
     }
-    public ArrayList<Subtask> get_subtasks()
+    /*public ArrayList<Subtask> get_subtasks()
     {
         return this.subtasks;
-    }
+    }*/
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public static ArrayList<Task> createTaskListFromJSON(JSONArray jsonArray) {
@@ -87,7 +87,7 @@ public class Task {
                 task.set_task_name(taskObject.getString("name"));
                 task.set_task_note(taskObject.getString("note"));
                 task.set_task_completed(taskObject.getBoolean("complete"));
-                task.set_subtasks(Subtask.createSubtaskListFromJSON(taskObject.getJSONArray("subtasks").getJSONObject(0)));
+                //task.set_subtasks(Subtask.createSubtaskListFromJSON(taskObject.getJSONArray("subtasks").getJSONObject(0)));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -106,12 +106,12 @@ public class Task {
             json += "\"name\": \"" + task.get_task_name() + "\", ";
             json += "\"note\": \"" + task.get_task_note() + "\", ";
             json += "\"complete\": \"" + task.get_task_completed() + "\", ";
-            json += "\"subtasks\": [ ";
+            /*json += "\"subtasks\": [ ";
             ArrayList<Subtask> subtasks = task.get_subtasks();
             for (int i=0; i<subtasks.size(); ++i) {
                 json += Subtask.createJSONFromSubtaskList(subtasks);
             }
-            json += " ]";
+            json += " ]";*/
             json += " }";
             if ( c != (tasks.size() - 1) ) json +=", ";
         }
