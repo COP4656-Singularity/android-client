@@ -66,7 +66,15 @@ public class NoteDetail extends AppCompatActivity{
 
     public void addTask (View v){
         if (v.getId() == R.id.buttonUpdateTask){
-            if (taskName != null){
+            NewTask newTask = new NewTask();
+            try{
+                newTask.createNewTask(v);
+            }catch(JSONException je)
+            {
+                Toast.makeText(NoteDetail.this,"JSONException", Toast.LENGTH_SHORT).show();
+            }
+
+            /*if (taskName != null){
                 Boolean taskCompleted = false;
                 if (taskDate != null){
                     taskCompleted = true;
@@ -75,7 +83,7 @@ public class NoteDetail extends AppCompatActivity{
                 Task taskObject = new Task(taskName, taskNote, taskCompleted); //, subTasks);
                 taskList.add(taskObject);
 
-            }
+            }*/
         }
     }
 
