@@ -22,6 +22,7 @@ public class NewTask extends AppCompatActivity {
 
     EditText checkedTextView;
     EditText editTextTaskDesc;
+    EditText editTextDate;
     String id;
     JSONObject json;
 
@@ -30,7 +31,7 @@ public class NewTask extends AppCompatActivity {
         setContentView(R.layout.note_detail_layout);
         checkedTextView = (EditText) findViewById(R.id.checkedTextView);
         editTextTaskDesc = (EditText) findViewById(R.id.editTextTaskDesc);
-
+        editTextDate = (EditText) findViewById(R.id.editTextDate);
     }
 
 
@@ -40,7 +41,12 @@ public class NewTask extends AppCompatActivity {
         //create new task from user data
         String taskName = checkedTextView.getText().toString();
         String taskNote = editTextTaskDesc.getText().toString();
-        Task newTask = new Task(taskName, taskNote, false);
+        String taskDate = editTextDate.getText().toString();
+        boolean completed = false;
+        if (taskDate != null){
+            completed = true;
+        }
+        Task newTask = new Task(taskName, taskNote, completed);
 
         //put new task in empty list
         ArrayList new_task_list = new ArrayList<Task>();
@@ -60,7 +66,7 @@ public class NewTask extends AppCompatActivity {
                 }
             }
         };
-        
+
         //get task list from JSONObject
         JSONArray arr = json.getJSONArray("tasks");
 
