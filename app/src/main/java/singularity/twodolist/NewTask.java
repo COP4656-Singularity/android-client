@@ -29,7 +29,7 @@ public class NewTask extends AppCompatActivity {
 
 
 
-    /*public void createNewTask(View view) throws JSONException {
+    public void createNewTask(View view) throws JSONException {
         List<Task> taskList = new List<Task>;
         String taskName = checkedTextView.getText().toString();
         String taskNote = editTextTaskDesc.getText().toString();
@@ -51,6 +51,6 @@ public class NewTask extends AppCompatActivity {
 
         // then exit. this is async so we wait for the thread to call the onPostExecute() method
         // we defined in the anonymous class above.
-    }*/
+    }
 
 }
