@@ -6,7 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
+
+import java.util.ArrayList;
 import java.util.List;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,11 +34,15 @@ public class NewTask extends AppCompatActivity {
 
 
     public void createNewTask(View view) throws JSONException {
-        List<Task> taskList = new List<Task>;
+
+        //create new task from user data
         String taskName = checkedTextView.getText().toString();
         String taskNote = editTextTaskDesc.getText().toString();
         Task newTask = new Task(taskName, taskNote, false);
-        taskList.add(newTask);
+
+        //put new task in empty list
+        ArrayList new_task_list = new ArrayList<Task>;
+        new_task_list.add(newTask);
 
         // extend the client using an anonymous class:
         TodoClient c = new TodoClient() {
@@ -43,11 +51,22 @@ public class NewTask extends AppCompatActivity {
                 super.onPostExecute(s);
             }
         };
-        JSONObject json = new JSONObject();
-        json = ?;
+        //create new JSONObject from id
+        JSONObject json = c.getTodo(id);
 
-        // call the method you want to invoke from the api:
-        c.updateTodo(id, json).execute();
+        //get task list from JSONObject
+        JSONArray arr = json.getJSONArray("tasks");
+
+        //put new task in JSONObject's task list
+        arr.put(Task.createJSONFromTaskList(new_task_list));
+
+        //put updated task list in JSONObject
+        json.put("tasks", arr);
+
+        //convert JSONObject to String
+        String json_string = json.toString();
+        //Update the TodoList with string version of JSONObject
+        c.updateTodo(id, json_string).execute();
 
         // then exit. this is async so we wait for the thread to call the onPostExecute() method
         // we defined in the anonymous class above.
