@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import android.widget.Toast;
 
@@ -27,6 +29,8 @@ public class NoteDetail extends AppCompatActivity{
     private Button buttonDeleteTask;
     private List<Task> taskList;
     //private ArrayList<Subtask> subTasks;
+    String id;
+    JSONObject json;
     String taskName = null;
     String taskNote = null;
     String taskDate = null;
@@ -45,47 +49,81 @@ public class NoteDetail extends AppCompatActivity{
         editTextDate = (EditText) findViewById(R.id.editTextDate);
 
 
-        String list_name = getIntent().getStringExtra("list_name");
+        //String list_name = getIntent().getStringExtra("list_name");
     }
 
-    public void getTaskName (View v){
+    /*public void getTaskName (View v){
         if (v.getId() == R.id.checkedTextView){
             taskName = checkedTextView.getText().toString();
+
         }
     }
 
     public void getTaskDesc (View v){
         if (v.getId() == R.id.editTextTaskDesc){
             taskNote = editTextTaskDesc.getText().toString();
+
         }
     }
 
     public void getDateDone (View v){
         if (v.getId() == R.id.editTextDate){
             taskDate = editTextDate.getText().toString();
-        }
-    }
 
-    public void addTask (View v){
+        }
+    }*/
+
+    public void addTask (View v) throws JSONException{
         if (v.getId() == R.id.buttonUpdateTask){
-            NewTask newTask = new NewTask();
-            try{
-                newTask.createNewTask(v);
-            }catch(JSONException je)
-            {
-                Toast.makeText(NoteDetail.this,"JSONException", Toast.LENGTH_SHORT).show();
+          {
+
+                //create new task from user data
+                taskName = checkedTextView.getText().toString();
+                taskNote = editTextTaskDesc.getText().toString();
+                taskDate = editTextDate.getText().toString();
+                boolean completed = false;
+                if (taskDate != null){
+                    completed = true;
+                }
+                Task newTask = new Task(taskName, taskNote, completed);
+
+                //put new task in empty list
+              ArrayList new_task_list = new ArrayList<Task>();
+              new_task_list.add(newTask);
+
+              //get task list from JSONObject
+              JSONArray arr = json.getJSONArray("tasks");
+
+              //put new task in JSONObject's task list
+              arr.put(Task.createJSONFromTaskList(new_task_list));
+
+              //put updated task list in JSONObject
+              json.put("tasks", arr);
+
+              //convert JSONObject to String
+              String json_string = json.toString();
+
+              // extend the client using an anonymous class:
+              TodoClient c = new TodoClient() {
+                  @Override
+                  protected void onPostExecute(String s) {
+                      super.onPostExecute(s);
+                      try {
+                          json = new JSONObject(s);
+                          id = json.getString("id");
+                      } catch (JSONException je) {
+                          Toast.makeText(NoteDetail.this, "JSONException", Toast.LENGTH_SHORT).show();
+                      }
+                      startActivity(new Intent(NoteDetail.this, MainScreen.class));
+                  }
+              };
+              //Update the TodoList with string version of JSONObject
+              c.updateTodo(id, json_string).execute();
+
+              // then exit. this is async so we wait for the thread to call the onPostExecute() method
+              // we defined in the anonymous class above.
             }
 
-            /*if (taskName != null){
-                Boolean taskCompleted = false;
-                if (taskDate != null){
-                    taskCompleted = true;
-                }
-                //ArrayList<Subtask> subTasks = new ArrayList<Subtask>();
-                Task taskObject = new Task(taskName, taskNote, taskCompleted); //, subTasks);
-                taskList.add(taskObject);
-
-            }*/
         }
     }
 

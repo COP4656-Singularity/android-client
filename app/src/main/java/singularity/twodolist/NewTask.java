@@ -19,24 +19,27 @@ import org.json.JSONObject;
  * Created by David on 7/24/2016.
  */
 public class NewTask extends AppCompatActivity {
-
+/*
     EditText checkedTextView;
     EditText editTextTaskDesc;
     EditText editTextDate;
     String id;
     JSONObject json;
-
+    String taskName = null;
+    String taskNote = null;
+    String taskDate = null;
+*/
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.note_detail_layout);
-        checkedTextView = (EditText) findViewById(R.id.checkedTextView);
-        editTextTaskDesc = (EditText) findViewById(R.id.editTextTaskDesc);
-        editTextDate = (EditText) findViewById(R.id.editTextDate);
+        //setContentView(R.layout.note_detail_layout);
+        //checkedTextView = (EditText) findViewById(R.id.checkedTextView);
+        //editTextTaskDesc = (EditText) findViewById(R.id.editTextTaskDesc);
+        //editTextDate = (EditText) findViewById(R.id.editTextDate);
+
     }
 
 
-
-    public void createNewTask(View view) throws JSONException {
+    /*public void createNewTask(View view) throws JSONException {
 
         //create new task from user data
         String taskName, taskNote, taskDate;
@@ -45,7 +48,7 @@ public class NewTask extends AppCompatActivity {
         taskNote = editTextTaskDesc.getText().toString();
         taskDate = editTextDate.getText().toString();
         boolean completed = false;
-        if (taskDate != null){
+        if (taskDate != null) {
             completed = true;
         }
         Task newTask = new Task(taskName, taskNote, completed);
@@ -71,13 +74,13 @@ public class NewTask extends AppCompatActivity {
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
-                try
-                {
+                try {
                     json = new JSONObject(s);
                     id = json.getString("id");
-                }catch(JSONException je){
-                    Toast.makeText(NewTask.this,"JSONException", Toast.LENGTH_SHORT).show();
+                } catch (JSONException je) {
+                    Toast.makeText(NewTask.this, "JSONException", Toast.LENGTH_SHORT).show();
                 }
+                startActivity(new Intent(NewTask.this, MainScreen.class));
             }
         };
         //Update the TodoList with string version of JSONObject
@@ -85,4 +88,6 @@ public class NewTask extends AppCompatActivity {
 
         // then exit. this is async so we wait for the thread to call the onPostExecute() method
         // we defined in the anonymous class above.
-    }
+
+    }*/
+}
