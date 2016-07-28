@@ -39,9 +39,11 @@ public class NewTask extends AppCompatActivity {
     public void createNewTask(View view) throws JSONException {
 
         //create new task from user data
-        String taskName = checkedTextView.getText().toString();
-        String taskNote = editTextTaskDesc.getText().toString();
-        String taskDate = editTextDate.getText().toString();
+        String taskName, taskNote, taskDate;
+
+        taskName = checkedTextView.getText().toString();
+        taskNote = editTextTaskDesc.getText().toString();
+        taskDate = editTextDate.getText().toString();
         boolean completed = false;
         if (taskDate != null){
             completed = true;
@@ -51,6 +53,18 @@ public class NewTask extends AppCompatActivity {
         //put new task in empty list
         ArrayList new_task_list = new ArrayList<Task>();
         new_task_list.add(newTask);
+
+        //get task list from JSONObject
+        JSONArray arr = json.getJSONArray("tasks");
+
+        //put new task in JSONObject's task list
+        arr.put(Task.createJSONFromTaskList(new_task_list));
+
+        //put updated task list in JSONObject
+        json.put("tasks", arr);
+
+        //convert JSONObject to String
+        String json_string = json.toString();
 
         // extend the client using an anonymous class:
         TodoClient c = new TodoClient() {
@@ -66,23 +80,9 @@ public class NewTask extends AppCompatActivity {
                 }
             }
         };
-
-        //get task list from JSONObject
-        JSONArray arr = json.getJSONArray("tasks");
-
-        //put new task in JSONObject's task list
-        arr.put(Task.createJSONFromTaskList(new_task_list));
-
-        //put updated task list in JSONObject
-        json.put("tasks", arr);
-
-        //convert JSONObject to String
-        String json_string = json.toString();
         //Update the TodoList with string version of JSONObject
         c.updateTodo(id, json_string).execute();
 
         // then exit. this is async so we wait for the thread to call the onPostExecute() method
         // we defined in the anonymous class above.
     }
-
-}
